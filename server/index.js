@@ -12,15 +12,25 @@ const server = http.createServer(app);
 const io = socketio(server);
 
 // Code for connects and disconnects
-io.on('connection', (socket) => {
-    console.log('we have a new connection.')
+io.on("connection", (socket) => {
+  console.log("we have a new connection.");
 
-    socket.on('disconnect', () => {
-        console.log('User has left.')
-    })
+  socket.on("join", ({ name, room }, callback) => {
+    console.log(name, room);
+
+    const error = true;
+
+    if (error) {
+      callback({ error: "error" });
+    }
+  });
+
+  socket.on("disconnect", () => {
+    console.log("User has left.");
+  });
 });
 
 // SETUP FOR MIDDLEWARE
-app.use(router)
+app.use(router);
 
 server.listen(PORT, () => console.log(`Listeing on port ${PORT}`));
