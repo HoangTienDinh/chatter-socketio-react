@@ -1,16 +1,24 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Join = () => {
-    const [name, setName] = useState('');
-    const [room, setRoom] = useState('');
+  const [name, setName] = useState("");
+  const [room, setRoom] = useState("");
 
-    
-    return (
+  return (
+    <div className="joinOuterContainer">
+      <div className="joinInnerContainer">
+        <h1 className="heading">Join</h1>
         <div>
-            Join
+          <input placeholder="" className="joinInput" type="text" onChange={} />
         </div>
-    )
-}
+        <div>
+          <input placeholder="" className="joinInput" type="text" onChange={} />
+        </div>
+        
+      </div>
+    </div>
+  );
+};
 
-export default Join
+export default Join;
