@@ -1,14 +1,21 @@
-import React, { useState, useEffect } from 'react';
-import queryString from 'query-string';
-import io from 'socket.io-client';
+import React, { useState, useEffect } from "react";
+import queryString from "query-string";
+import io from "socket.io-client";
 
+const Chat = ({ location }) => {
+  // useEffect is used for lifecycle functions
+  useEffect(() => {
+      const data = queryString.parse(location.search)
+      console.log(data)
+      console.log(location.search)
+  }, []);
 
-const Chat = () => {
-    return (
-        <div>
-            Chat
-        </div>
-    )
-}
+  return (
+    <div>
+      <div></div>
+      Chat
+    </div>
+  );
+};
 
-export default Chat
+export default Chat;
