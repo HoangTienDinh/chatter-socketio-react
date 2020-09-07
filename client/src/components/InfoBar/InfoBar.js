@@ -1,7 +1,8 @@
 import React from "react";
 import "./InfoBar.css";
 
-const InforBar = () => {
+
+const InfoBar = () => {
   return (
     <div className="infoBar">
       <div className="leftInnerContainer">
@@ -18,4 +19,4 @@ const InforBar = () => {
   );
 };
 
-export default InforBar;
+export default InfoBar;
