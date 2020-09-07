@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import queryString from "query-string";
 import io from "socket.io-client";
 import InfoBar from "../InfoBar/InfoBar";
-import InputBar from "../InputBar/InputBar";
+import Input from "../Input/Input";
 
 import "./Chat.css";
 
@@ -56,9 +56,13 @@ const Chat = ({ location }) => {
   return (
     <div className="outerContainer">
       <div className="container">
-        <InfoBar room={room}/>
+        <InfoBar room={room} />
 
-        <Input />
+        <Input
+          message={message}
+          setMessage={setMessage}
+          sendMessage={sendMessage}
+        />
       </div>
     </div>
   );
