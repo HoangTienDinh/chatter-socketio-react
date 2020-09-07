@@ -29,6 +29,11 @@ io.on("connection", (socket) => {
       text: `${user.name}, welcome to the room ${user.room}`,
     });
 
+    // sends a message to all other users excluding the specific user that just joined
+    socket.broadcast
+      .to(user.room)
+      .emit("message", { user: "admin", text: `${user.name}, has joined!` });
+
     // join users of the room with socket
     socket.join(user.room);
   });
