@@ -4,12 +4,12 @@ import "./InfoBar.css";
 import closeIcon from "../../icons/closeIcon";
 import onlineIcon from "../../icons/onlineIcon";
 
-const InfoBar = () => {
+const InfoBar = ({ room }) => {
   return (
     <div className="infoBar">
       <div className="leftInnerContainer">
         <img className="onlineIcon" src={onlineIcon} alt="online image" />
-        <h3>roomName</h3>
+        <h3>{room}</h3>
       </div>
 
       <div className="rightInnerContainer">
