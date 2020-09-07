@@ -2,7 +2,7 @@ const express = require("express");
 const socketio = require("socket.io");
 const http = require("http");
 
-const { addUser, removeUser, getUser, getUsersInRoom } = require('./users.js')
+const { addUser, removeUser, getUser, getUsersInRoom } = require("./users.js");
 
 const PORT = process.env.PORT || 5000;
 
@@ -18,9 +18,19 @@ io.on("connection", (socket) => {
   console.log("we have a new connection.");
 
   socket.on("join", ({ name, room }, callback) => {
-    console.log(name, room);
+    // destructures the functions inside the addUser(), found in users.js
+    const { error, user } = addUser({ id: socket.id, name, room });
 
+    if (error) return callback(error);
 
+    // admin message on login
+    socket.emit("message", {
+      user: "admin",
+      text: `${user.name}, welcome to the room ${user.room}`,
+    });
+
+    // join users of the room with socket
+    socket.join(user.room);
   });
 
   socket.on("disconnect", () => {
