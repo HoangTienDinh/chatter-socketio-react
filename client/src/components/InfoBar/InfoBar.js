@@ -1,6 +1,8 @@
 import React from "react";
 import "./InfoBar.css";
 
+import closeIcon from "../../icons/closeIcon";
+import onlineIcon from "../../icons/onlineIcon";
 
 const InfoBar = () => {
   return (
