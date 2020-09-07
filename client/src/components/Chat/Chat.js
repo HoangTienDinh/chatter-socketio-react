@@ -37,7 +37,7 @@ const Chat = ({ location }) => {
   // for changes everytime a user sends a message
   useEffect(() => {
     socket.on("message", (message) => {
-      setMessages([...setMessages, message]);
+      setMessages([...messages, message]);
     });
   }, [messages]);
 
