@@ -36,6 +36,9 @@ io.on("connection", (socket) => {
 
     // join users of the room with socket
     socket.join(user.room);
+
+    // if there are no errors, this callback can be called so nothing happens
+    callback();
   });
 
   socket.on("disconnect", () => {
