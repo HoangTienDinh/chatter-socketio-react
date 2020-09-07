@@ -7,6 +7,9 @@ let socket;
 const Chat = ({ location }) => {
   const [name, setName] = useState("");
   const [room, setRoom] = useState("");
+  const [message, setMessage] = useState([]);
+  const [messages, setMessages] = useState([]);
+
   const ENDPOINT = "localhost:5000";
 
   // useEffect is used for lifecycle functions
@@ -18,17 +21,22 @@ const Chat = ({ location }) => {
     setName(name);
     setRoom(room);
 
-    socket.emit('join', { name, room }, () => {
+    socket.emit("join", { name, room }, () => {});
 
-    });
-    
     return () => {
-      socket.emit('disconnect')
+      socket.emit("disconnect");
 
       // turn off the one instance
       socket.off();
-    }
+    };
   }, [ENDPOINT, location.search]);
+
+  // for changes everytime a user sends a message
+  useEffect(() => {
+    socket.on("message", (message) => {
+      setMessages([...setMessages, message]);
+    });
+  }, [messages]);
 
   return (
     <div>
